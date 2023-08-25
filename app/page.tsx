@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main></main>
+    <div className='text-violet-500 text-2xl'>IndiStay</div>
     
   )
 }
