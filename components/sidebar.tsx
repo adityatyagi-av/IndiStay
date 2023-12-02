@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Code, CodeIcon, ImageIcon, LayoutDashboard, MessageSquare, MusicIcon, SettingsIcon, VideoIcon } from "lucide-react"
-
+import { usePathname } from 'next/navigation'
 const monsterrat=Montserrat({weight:"600",
 subsets:["latin"]})
 
@@ -56,6 +56,7 @@ const routes=[
 
 
 const Sidebar = () => {
+  const pathname= usePathname();
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-gray-800 text-white">
       <div className="px-3 py-2 flex-1">
@@ -73,7 +74,8 @@ const Sidebar = () => {
           {routes.map((route)=>(
             <Link href={route.href}
             key={route.href}>
-              <div className="flex items-center flex-1 p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition">
+              <div className={cn("flex items-center flex-1 p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+              pathname===route.href?"text-white bg-white/10":"text-zinc-400")}>
                 <route.icon className={cn("h-5 w-5 mr-3",route.color)}/>
                 {route.label}
               </div>
